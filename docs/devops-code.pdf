@@ -1,0 +1,310 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [ 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R ] /Count 5 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier-Bold >>
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 2095 >>
+stream
+0.12 0.28 0.52 rg 40 725 532 38 re f
+BT /F1 16 Tf 1.00 1.00 1.00 rg 1 0 0 1 50 740 Tm (DevOps Docker Lab: Code & Architecture Reference) Tj ET
+BT /F2 10 Tf 0.30 0.30 0.30 rg 1 0 0 1 50 712 Tm (Visual reference guide containing folder trees, Dockerfiles, Compose files, and proxy configurations.) Tj ET
+BT /F1 12 Tf 0.10 0.10 0.10 rg 1 0 0 1 40 688 Tm (1. Repository Structure & Artifact Tree) Tj ET
+BT /F2 9 Tf 0.40 0.40 0.40 rg 1 0 0 1 40 674 Tm (One-line explanation: A clean, modular multi-tier Docker curriculum spanning single-stage to hardened proxy stacks.) Tj ET
+0.96 0.97 0.98 rg 0.85 0.87 0.90 RG 40 520 532 145 re B
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 645 Tm (docker-flask-react-lab/) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 627 Tm (  |-- 01-flask-basic/        # Single-stage Flask container \(python:3.12-slim\)) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 609 Tm (  |-- 02-flask-multistage/   # Multi-stage Flask with venv, non-root user, Gunicorn) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 591 Tm (  |-- 03-three-tier/         # Compose stack: React + Flask + PostgreSQL with named volume) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 573 Tm (  |-- 04-three-tier-nginx/   # Production stack: Nginx proxy + isolated dual networks) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 555 Tm (  \\-- docs/                  # Runbook \(step-by-step.md\) and PDF documentation) Tj ET
+BT /F1 12 Tf 0.10 0.10 0.10 rg 1 0 0 1 40 495 Tm (2. 01-flask-basic/Dockerfile) Tj ET
+BT /F2 9 Tf 0.40 0.40 0.40 rg 1 0 0 1 40 481 Tm (One-line explanation: A single-stage Dockerfile packaging a Python 3.12 Flask API into an official python:3.12-slim base.) Tj ET
+0.96 0.97 0.98 rg 0.85 0.87 0.90 RG 40 240 532 230 re B
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 450 Tm (FROM python:3.12-slim) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 437 Tm () Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 424 Tm (# Set container working directory) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 411 Tm (WORKDIR /app) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 398 Tm () Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 385 Tm (# Copy dependencies file first for Docker layer caching) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 372 Tm (COPY requirements.txt .) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 359 Tm () Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 346 Tm (# Install Python dependencies without caching wheels) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 333 Tm (RUN pip install --no-cache-dir -r requirements.txt) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 320 Tm () Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 307 Tm (# Copy application source code) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 294 Tm (COPY app.py .) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 281 Tm () Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 268 Tm (# Expose Flask port 5000) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 255 Tm (EXPOSE 5000) Tj ET
+BT /F3 8.5 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 242 Tm (CMD [\"python\", \"app.py\"]) Tj ET
+BT /F2 8 Tf 0.50 0.50 0.50 rg 1 0 0 1 270 20 Tm (Page 1 of 5) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 2673 >>
+stream
+BT /F1 12 Tf 0.10 0.10 0.10 rg 1 0 0 1 40 745 Tm (3. 02-flask-multistage/Dockerfile) Tj ET
+BT /F2 9 Tf 0.40 0.40 0.40 rg 1 0 0 1 40 731 Tm (One-line explanation: Multi-stage Dockerfile isolating compilation into a virtual environment and running as non-root with Gunicorn.) Tj ET
+0.96 0.97 0.98 rg 0.85 0.87 0.90 RG 40 445 532 275 re B
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 702 Tm (# Stage 1: Build stage \(compile & install dependencies\)) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 689 Tm (FROM python:3.12-slim AS builder) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 676 Tm (WORKDIR /build) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 663 Tm (RUN python -m venv /opt/venv) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 650 Tm (ENV PATH=\"/opt/venv/bin:$PATH\") Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 637 Tm (COPY requirements.txt .) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 624 Tm (RUN pip install --no-cache-dir -r requirements.txt) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 611 Tm () Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 598 Tm (# Stage 2: Runtime stage \(clean & lightweight\)) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 585 Tm (FROM python:3.12-slim AS runner) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 572 Tm (RUN useradd --create-home --shell /bin/bash appuser) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 559 Tm (WORKDIR /app) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 546 Tm (COPY --from=builder /opt/venv /opt/venv) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 533 Tm (ENV PATH=\"/opt/venv/bin:$PATH\") Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 520 Tm (COPY app.py .) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 507 Tm (RUN chown -R appuser:appuser /app) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 494 Tm (USER appuser) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 481 Tm (EXPOSE 5000) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 468 Tm (CMD [\"gunicorn\", \"--bind\", \"0.0.0.0:5000\", \"--workers\", \"2\", \"app:app\"]) Tj ET
+BT /F1 12 Tf 0.10 0.10 0.10 rg 1 0 0 1 40 415 Tm (4. 03-three-tier/backend/Dockerfile) Tj ET
+BT /F2 9 Tf 0.40 0.40 0.40 rg 1 0 0 1 40 401 Tm (One-line explanation: Multi-stage backend Dockerfile installing psycopg2-binary and running Gunicorn as non-root user.) Tj ET
+0.96 0.97 0.98 rg 0.85 0.87 0.90 RG 40 115 532 275 re B
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 372 Tm (# Multi-stage build mirroring 02-flask-multistage with psycopg2-binary) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 359 Tm (FROM python:3.12-slim AS builder) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 346 Tm (WORKDIR /build) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 333 Tm (RUN python -m venv /opt/venv) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 320 Tm (ENV PATH=\"/opt/venv/bin:$PATH\") Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 307 Tm (COPY requirements.txt .) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 294 Tm (RUN pip install --no-cache-dir -r requirements.txt) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 281 Tm () Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 268 Tm (FROM python:3.12-slim AS runner) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 255 Tm (RUN useradd --create-home --shell /bin/bash appuser) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 242 Tm (WORKDIR /app) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 229 Tm (COPY --from=builder /opt/venv /opt/venv) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 216 Tm (ENV PATH=\"/opt/venv/bin:$PATH\") Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 203 Tm (COPY app.py .) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 190 Tm (RUN chown -R appuser:appuser /app) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 177 Tm (USER appuser) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 164 Tm (EXPOSE 5000) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 151 Tm (CMD [\"gunicorn\", \"--bind\", \"0.0.0.0:5000\", \"--workers\", \"2\", \"app:app\"]) Tj ET
+BT /F2 8 Tf 0.50 0.50 0.50 rg 1 0 0 1 270 20 Tm (Page 2 of 5) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 12 0 R >>
+endobj
+12 0 obj
+<< /Length 2673 >>
+stream
+BT /F1 12 Tf 0.10 0.10 0.10 rg 1 0 0 1 40 745 Tm (5. 03-three-tier/frontend/Dockerfile) Tj ET
+BT /F2 9 Tf 0.40 0.40 0.40 rg 1 0 0 1 40 731 Tm (One-line explanation: Multi-stage Dockerfile building React with Node 22 and serving via Nginx on port 80.) Tj ET
+0.96 0.97 0.98 rg 0.85 0.87 0.90 RG 40 480 532 240 re B
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 702 Tm (# Stage 1: Build static assets using Node.js 22) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 689 Tm (FROM node:22-alpine AS build) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 676 Tm (WORKDIR /app) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 663 Tm (COPY package.json .) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 650 Tm (RUN npm install) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 637 Tm (COPY index.html vite.config.js ./) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 624 Tm (COPY src/ ./src/) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 611 Tm (RUN npm run build) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 598 Tm () Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 585 Tm (# Stage 2: Serve static assets using Nginx web server) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 572 Tm (FROM nginx:alpine) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 559 Tm (COPY nginx.conf /etc/nginx/conf.d/default.conf) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 546 Tm (COPY --from=build /app/dist /usr/share/nginx/html) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 533 Tm (EXPOSE 80) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 520 Tm (CMD [\"nginx\", \"-g\", \"daemon off;\"]) Tj ET
+BT /F1 12 Tf 0.10 0.10 0.10 rg 1 0 0 1 40 450 Tm (6. 03-three-tier/compose.yaml) Tj ET
+BT /F2 9 Tf 0.40 0.40 0.40 rg 1 0 0 1 40 436 Tm (One-line explanation: Declarative multi-container configuration orchestrating PostgreSQL, Flask backend, and React frontend.) Tj ET
+0.96 0.97 0.98 rg 0.85 0.87 0.90 RG 40 80 532 345 re B
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 408 Tm (services:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 396 Tm (  database:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 384 Tm (    image: postgres:17) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 372 Tm (    environment:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 360 Tm (      POSTGRES_DB: appdb) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 348 Tm (      POSTGRES_USER: appuser) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 336 Tm (      POSTGRES_PASSWORD: apppass123) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 324 Tm (    volumes:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 312 Tm (      - postgres-data:/var/lib/postgresql/data) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 300 Tm () Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 288 Tm (  backend:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 276 Tm (    build: ./backend) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 264 Tm (    environment:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 252 Tm (      DB_HOST: database) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 240 Tm (      DB_PORT: 5432) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 228 Tm (      DB_NAME: appdb) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 216 Tm (      DB_USER: appuser) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 204 Tm (      DB_PASSWORD: apppass123) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 192 Tm (    ports:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 180 Tm (      - \"5000:5000\") Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 168 Tm (    depends_on:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 156 Tm (      - database) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 144 Tm () Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 132 Tm (  frontend:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 120 Tm (    build: ./frontend) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 108 Tm (    ports:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 96 Tm (      - \"3000:80\") Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 84 Tm (    depends_on:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 72 Tm (      - backend) Tj ET
+BT /F2 8 Tf 0.50 0.50 0.50 rg 1 0 0 1 270 20 Tm (Page 3 of 5) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 14 0 R >>
+endobj
+14 0 obj
+<< /Length 2673 >>
+stream
+BT /F1 12 Tf 0.10 0.10 0.10 rg 1 0 0 1 40 745 Tm (7. 04-three-tier-nginx/compose.yaml) Tj ET
+BT /F2 9 Tf 0.40 0.40 0.40 rg 1 0 0 1 40 731 Tm (One-line explanation: Production Compose stack with an external Nginx proxy, frontend network, and an isolated internal database network.) Tj ET
+0.96 0.97 0.98 rg 0.85 0.87 0.90 RG 40 70 532 650 re B
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 700 Tm (services:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 688 Tm (  nginx:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 676 Tm (    image: nginx:alpine) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 664 Tm (    ports:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 652 Tm (      - \"8080:80\") Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 640 Tm (    volumes:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 628 Tm (      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 616 Tm (    depends_on:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 604 Tm (      - frontend) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 592 Tm (      - backend) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 580 Tm (    networks:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 568 Tm (      - frontend-network) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 556 Tm () Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 544 Tm (  frontend:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 532 Tm (    build: ./frontend) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 520 Tm (    depends_on:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 508 Tm (      - backend) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 496 Tm (    networks:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 484 Tm (      - frontend-network) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 472 Tm () Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 460 Tm (  backend:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 448 Tm (    build: ./backend) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 436 Tm (    environment:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 424 Tm (      DB_HOST: database) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 412 Tm (      DB_PORT: 5432) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 400 Tm (      DB_NAME: appdb) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 388 Tm (      DB_USER: appuser) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 376 Tm (      DB_PASSWORD: apppass123) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 364 Tm (    depends_on:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 352 Tm (      - database) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 340 Tm (    networks:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 328 Tm (      - frontend-network) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 316 Tm (      - database-network) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 304 Tm () Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 292 Tm (  database:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 280 Tm (    image: postgres:17) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 268 Tm (    environment:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 256 Tm (      POSTGRES_DB: appdb) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 244 Tm (      POSTGRES_USER: appuser) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 232 Tm (      POSTGRES_PASSWORD: apppass123) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 220 Tm (    volumes:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 208 Tm (      - postgres-data:/var/lib/postgresql/data) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 196 Tm (    networks:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 184 Tm (      - database-network) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 172 Tm () Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 160 Tm (networks:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 148 Tm (  frontend-network:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 136 Tm (  database-network:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 124 Tm (    internal: true) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 112 Tm () Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 100 Tm (volumes:) Tj ET
+BT /F3 7.8 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 88 Tm (  postgres-data:) Tj ET
+BT /F2 8 Tf 0.50 0.50 0.50 rg 1 0 0 1 270 20 Tm (Page 4 of 5) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 16 0 R >>
+endobj
+16 0 obj
+<< /Length 2673 >>
+stream
+BT /F1 12 Tf 0.10 0.10 0.10 rg 1 0 0 1 40 745 Tm (8. 04-three-tier-nginx/nginx/default.conf) Tj ET
+BT /F2 9 Tf 0.40 0.40 0.40 rg 1 0 0 1 40 731 Tm (One-line explanation: Nginx reverse proxy routing web requests to frontend container and API requests to Flask container.) Tj ET
+0.96 0.97 0.98 rg 0.85 0.87 0.90 RG 40 420 532 300 re B
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 702 Tm (server {) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 689 Tm (    listen 80;) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 676 Tm (    server_name localhost;) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 663 Tm () Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 650 Tm (    # Proxy root path traffic to the React frontend container) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 637 Tm (    location / {) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 624 Tm (        proxy_pass http://frontend:80;) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 611 Tm (        proxy_set_header Host $host;) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 598 Tm (        proxy_set_header X-Real-IP $remote_addr;) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 585 Tm (        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 572 Tm (        proxy_set_header X-Forwarded-Proto $scheme;) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 559 Tm (    }) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 546 Tm () Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 533 Tm (    # Proxy API requests directly to the Flask backend container) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 520 Tm (    location /api/ {) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 507 Tm (        proxy_pass http://backend:5000/api/;) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 494 Tm (        proxy_set_header Host $host;) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 481 Tm (        proxy_set_header X-Real-IP $remote_addr;) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 468 Tm (        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 455 Tm (        proxy_set_header X-Forwarded-Proto $scheme;) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 442 Tm (    }) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 429 Tm (}) Tj ET
+BT /F1 12 Tf 0.10 0.10 0.10 rg 1 0 0 1 40 390 Tm (9. 04-three-tier-nginx/frontend/Dockerfile) Tj ET
+BT /F2 9 Tf 0.40 0.40 0.40 rg 1 0 0 1 40 376 Tm (One-line explanation: Frontend multi-stage Dockerfile serving compiled static assets only, leaving API routing to the main proxy.) Tj ET
+0.96 0.97 0.98 rg 0.85 0.87 0.90 RG 40 110 532 255 re B
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 346 Tm (FROM node:22-alpine AS build) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 333 Tm (WORKDIR /app) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 320 Tm (COPY package.json .) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 307 Tm (RUN npm install) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 294 Tm (COPY index.html vite.config.js ./) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 281 Tm (COPY src/ ./src/) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 268 Tm (RUN npm run build) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 255 Tm () Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 242 Tm (FROM nginx:alpine) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 229 Tm (# Static-only Nginx configuration \(no /api/ proxy block needed\)) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 216 Tm (COPY nginx.conf /etc/nginx/conf.d/default.conf) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 203 Tm (COPY --from=build /app/dist /usr/share/nginx/html) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 190 Tm (EXPOSE 80) Tj ET
+BT /F3 8.2 Tf 0.15 0.20 0.30 rg 1 0 0 1 50 177 Tm (CMD [\"nginx\", \"-g\", \"daemon off;\"]) Tj ET
+BT /F2 8 Tf 0.50 0.50 0.50 rg 1 0 0 1 270 20 Tm (Page 5 of 5) Tj ET
+endstream
+endobj
+xref
+0 17
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000142 00000 n 
+0000000215 00000 n 
+0000000283 00000 n 
+0000000351 00000 n 
+0000000424 00000 n 
+0000000574 00000 n 
+0000002737 00000 n 
+0000002888 00000 n 
+0000005629 00000 n 
+0000005780 00000 n 
+0000008521 00000 n 
+0000008672 00000 n 
+0000011413 00000 n 
+0000011564 00000 n 
+trailer
+<< /Size 17 /Root 1 0 R >>
+startxref
+14305
+%%EOF
