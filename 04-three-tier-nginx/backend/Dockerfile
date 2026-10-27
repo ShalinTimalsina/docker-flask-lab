@@ -1,0 +1,49 @@
+# ==========================================
+# Stage 1: Build stage (compile & install dependencies)
+# ==========================================
+FROM python:3.12-slim AS builder
+
+# Set working directory for build dependencies
+WORKDIR /build
+
+# Create virtual environment
+RUN python -m venv /opt/venv
+
+# Activate virtual environment in PATH
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Copy requirements and install packages
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# ==========================================
+# Stage 2: Runtime stage (production WSGI server)
+# ==========================================
+FROM python:3.12-slim AS runner
+
+# Create non-root user for security
+RUN useradd --create-home --shell /bin/bash appuser
+
+# Set working directory for application
+WORKDIR /app
+
+# Copy virtual environment from builder stage
+COPY --from=builder /opt/venv /opt/venv
+
+# Set PATH to use virtual environment binaries
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Copy backend application code
+COPY app.py .
+
+# Change directory ownership to non-root user
+RUN chown -R appuser:appuser /app
+
+# Switch to non-root user
+USER appuser
+
+# Expose backend port 5000
+EXPOSE 5000
+
+# Start Gunicorn WSGI server
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "app:app"]
